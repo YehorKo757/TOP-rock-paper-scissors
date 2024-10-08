@@ -32,7 +32,9 @@
         function playRound(humanChoice, computerChoice) {
             humanChoice = humanChoice.toLowerCase().trim();
 
-            if (humanChoice === computerChoice) {
+            if (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
+                return "Wrong input. I will count it as a tie. Choose from: rock, paper or scissors (case insensitive)."
+            } else if (humanChoice === computerChoice) {
                 return "It's a tie!"
             } else if ((humanChoice === "rock" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "scissors") ||
