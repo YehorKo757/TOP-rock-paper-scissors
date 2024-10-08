@@ -19,12 +19,25 @@
                 return "scissors";
             }
         }
+
+        function getHumanChoice () {
+            choice = prompt("Please pick your choice: r - 'rock', p - 'paper' or s - 'scissors' ");
+            if (choice === 'r') {
+                return "rock";
+            } else if (choice === 'p') {
+                return "paper";
+            } else if (choice === 's'){
+                return "scissors";
+            }
+        }
         
         console.log(getComputerChoice());
         console.log(getComputerChoice());
         console.log(getComputerChoice());
         console.log(getComputerChoice());
         console.log(getComputerChoice());
+        console.log(getHumanChoice());
+        console.log(getHumanChoice());
         
     </script>
 </body>
