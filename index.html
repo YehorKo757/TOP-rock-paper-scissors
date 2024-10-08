@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Hello World!")
+
+        function getComputerChoice (max = 3) {
+            choice = Math.floor(Math.random() * max);
+            if (choice === 0) {
+                return "rock";
+            } else if (choice === 1) {
+                return "paper";
+            } else {
+                return "scissors";
+            }
+        }
+        
+        console.log(getComputerChoice());
+        console.log(getComputerChoice());
+        console.log(getComputerChoice());
+        console.log(getComputerChoice());
+        console.log(getComputerChoice());
+        
+    </script>
+</body>
+</html>
