@@ -9,6 +9,10 @@
     <script>
         console.log("Hello World!")
 
+        function capitalize(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1)
+        }
+
         function getComputerChoice (max = 3) {
             choice = Math.floor(Math.random() * max);
             if (choice === 0) {
@@ -21,23 +25,33 @@
         }
 
         function getHumanChoice () {
-            choice = prompt("Please pick your choice: r - 'rock', p - 'paper' or s - 'scissors' ");
-            if (choice === 'r') {
-                return "rock";
-            } else if (choice === 'p') {
-                return "paper";
-            } else if (choice === 's'){
-                return "scissors";
+            choice = prompt("Please pick your choice: rock, paper or scissors");
+            return choice;
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            humanChoice = humanChoice.toLowerCase().trim();
+
+            if (humanChoice === computerChoice) {
+                return "It's a tie!"
+            } else if ((humanChoice === "rock" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "rock")) {
+                computerScore += 1;
+                return `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`
+            } else {
+                return `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`
             }
         }
         
-        console.log(getComputerChoice());
-        console.log(getComputerChoice());
-        console.log(getComputerChoice());
-        console.log(getComputerChoice());
-        console.log(getComputerChoice());
-        console.log(getHumanChoice());
-        console.log(getHumanChoice());
+        let humanScore = 0;
+        let computerScore = 0;
+        console.log(capitalize("rock"));
+
+        const hSelection = getHumanChoice();
+        const cSelection = getComputerChoice();
+
+        console.log(playRound(hSelection, cSelection));
         
     </script>
 </body>
