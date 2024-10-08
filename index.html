@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        console.log("Hello World!")
+        console.log("Hello World! Let's play RPC :)")
 
         function capitalize(string) {
             return string.charAt(0).toUpperCase() + string.slice(1)
@@ -40,18 +40,33 @@
                 computerScore += 1;
                 return `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`
             } else {
+                humanScore += 1;
                 return `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`
+            }
+        }
+
+        function playGame() {
+            for (let i=0; i<5; i++) {
+
+                let hSelection = getHumanChoice();
+                let cSelection = getComputerChoice();
+
+                console.log(`Round number ${i+1} \n` + playRound(hSelection, cSelection) + `.\nThe score is: Human - ${humanScore} VS Computer - ${computerScore}.`)
+            }
+            const result = undefined;
+            if (humanScore === computerScore) {
+                return `It's a tie! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
+            } else if (humanScore < computerScore) {
+                return `You lost! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
+            } else {
+                return `You won! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
             }
         }
         
         let humanScore = 0;
         let computerScore = 0;
-        console.log(capitalize("rock"));
 
-        const hSelection = getHumanChoice();
-        const cSelection = getComputerChoice();
-
-        console.log(playRound(hSelection, cSelection));
+        console.log(playGame());
         
     </script>
 </body>
