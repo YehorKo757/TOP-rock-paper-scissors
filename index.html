@@ -4,72 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script defer src="rpc-js.js"></script>
 </head>
 <body>
-    <script>
-        console.log("Hello World! Let's play RPC :)")
-
-        function capitalize(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1)
-        }
-
-        function getComputerChoice (max = 3) {
-            choice = Math.floor(Math.random() * max);
-            if (choice === 0) {
-                return "rock";
-            } else if (choice === 1) {
-                return "paper";
-            } else {
-                return "scissors";
-            }
-        }
-
-        function getHumanChoice () {
-            choice = prompt("Please pick your choice: rock, paper or scissors");
-            return choice;
-        }
-
-        function playRound(humanChoice, computerChoice) {
-            humanChoice = humanChoice.toLowerCase().trim();
-
-            if (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
-                return "Wrong input. I will count it as a tie. Choose from: rock, paper or scissors (case insensitive)."
-            } else if (humanChoice === computerChoice) {
-                return "It's a tie!"
-            } else if ((humanChoice === "rock" && computerChoice === "paper") ||
-        (humanChoice === "paper" && computerChoice === "scissors") ||
-        (humanChoice === "scissors" && computerChoice === "rock")) {
-                computerScore += 1;
-                return `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`
-            } else {
-                humanScore += 1;
-                return `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`
-            }
-        }
-
-        function playGame() {
-            for (let i=0; i<5; i++) {
-
-                let hSelection = getHumanChoice();
-                let cSelection = getComputerChoice();
-
-                console.log(`Round number ${i+1} \n` + playRound(hSelection, cSelection) + `.\nThe score is: Human - ${humanScore} VS Computer - ${computerScore}.`)
-            }
-            const result = undefined;
-            if (humanScore === computerScore) {
-                return `It's a tie! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-            } else if (humanScore < computerScore) {
-                return `You lost! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-            } else {
-                return `You won! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-            }
-        }
-        
-        let humanScore = 0;
-        let computerScore = 0;
-
-        console.log(playGame());
-        
-    </script>
+    <h3>Let's play Rock, Paper, Scissors Game!</h3>
+    <div class="main">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div class="results">
+        <h3>Results:</h3>
+        <p id="human"></p>
+        <p id="computer"></p>
+    </div>
 </body>
 </html>
