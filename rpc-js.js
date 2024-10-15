@@ -1,4 +1,4 @@
-console.log("Hello World! Let's play RPC :)")
+alert("Hello World! Let's play RPC :)");
 
         function capitalize(string) {
             return string.charAt(0).toUpperCase() + string.slice(1)
@@ -24,21 +24,36 @@ console.log("Hello World! Let's play RPC :)")
             humanChoice = humanChoice.toLowerCase().trim();
 
             if (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
-                console.log("Wrong input. I will count it as a tie. Choose from: rock, paper or scissors (case insensitive).");
+                roundResult.textContent = "Wrong input. I will count it as a tie. Choose from: rock, paper or scissors (case insensitive).";
                 // return
             } else if (humanChoice === computerChoice) {
-                console.log("It's a tie!");
+                roundResult.textContent = "It's a tie!";
                 // return "It's a tie!"
             } else if ((humanChoice === "rock" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "rock")) {
                 computerScore += 1;
-                console.log(`You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`)
+                roundResult.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`;
                 // return `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`
             } else {
                 humanScore += 1;
-                console.log(`You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`);
+                roundResult.textContent = `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`;
                 // return `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`
+            }
+        }
+
+        function isGameOver() {
+            if (humanScore >=5 || computerScore >=5) {
+                if (humanScore > computerScore) {
+                    alert(`Game over!\nCongrats! You won!\n${humanScore} : ${computerScore}`);
+                } else {
+                    alert(`Game over!\nOh no! You lost!\n${humanScore} : ${computerScore}`);
+                }
+                humanScore = 0;
+                computerScore = 0;
+                roundResult.textContent = "\u00A0";
+                humanScoreOut.textContent = `Your current score: ${humanScore}`;
+                computerScoreOut.textContent = `Computer current score: ${computerScore}`;
             }
         }
 
@@ -68,11 +83,14 @@ console.log("Hello World! Let's play RPC :)")
         const computerScoreOut = document.querySelector("#computer");
         computerScoreOut.textContent = `Computer current score: ${computerScore}`;
 
+        const roundResult = document.querySelector("#round");
+
         const rock = document.querySelector("#rock");
         rock.addEventListener("click", () => {
             playRound("rock", getComputerChoice());
             humanScoreOut.textContent = `Your current score: ${humanScore}`;
             computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            isGameOver();
         });
         
         const paper = document.querySelector("#paper");
@@ -80,6 +98,7 @@ console.log("Hello World! Let's play RPC :)")
             playRound("paper", getComputerChoice());
             humanScoreOut.textContent = `Your current score: ${humanScore}`;
             computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            isGameOver();
         });
 
         const scissors = document.querySelector("#scissors");
@@ -87,6 +106,7 @@ console.log("Hello World! Let's play RPC :)")
             playRound("scissors", getComputerChoice());
             humanScoreOut.textContent = `Your current score: ${humanScore}`;
             computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            isGameOver();
         });
 
         // console.log(playGame());
