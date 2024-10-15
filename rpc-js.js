@@ -54,6 +54,12 @@ alert("Hello World! Let's play RPC :)");
             computerScoreOut.textContent = `Computer current score: ${computerScore}`;
         }
 
+        function eventHandler(targetId) {
+            playRound(targetId, getComputerChoice());
+            displayScore();
+            isGameOver();
+        }
+
         let humanScore = 0;
         let computerScore = 0;
         
@@ -65,23 +71,29 @@ alert("Hello World! Let's play RPC :)");
 
         const roundResult = document.querySelector("#round");
 
-        const rock = document.querySelector("#rock");
-        rock.addEventListener("click", () => {
-            playRound("rock", getComputerChoice());
-            displayScore();
-            isGameOver();
-        });
-        
-        const paper = document.querySelector("#paper");
-        paper.addEventListener("click", () => {
-            playRound("paper", getComputerChoice());
-            displayScore();
-            isGameOver();
-        });
+        const buttons = document.querySelector(".main")
+        buttons.addEventListener("click", (event) => {
+            let target = event.target;
+            eventHandler(target.id);
+        })
 
-        const scissors = document.querySelector("#scissors");
-        scissors.addEventListener("click", () => {
-            playRound("scissors", getComputerChoice());
-            displayScore();
-            isGameOver();
-        });
+        // const rock = document.querySelector("#rock");
+        // rock.addEventListener("click", () => {
+        //     playRound("rock", getComputerChoice());
+        //     displayScore();
+        //     isGameOver();
+        // });
+        
+        // const paper = document.querySelector("#paper");
+        // paper.addEventListener("click", () => {
+        //     playRound("paper", getComputerChoice());
+        //     displayScore();
+        //     isGameOver();
+        // });
+
+        // const scissors = document.querySelector("#scissors");
+        // scissors.addEventListener("click", () => {
+        //     playRound("scissors", getComputerChoice());
+        //     displayScore();
+        //     isGameOver();
+        // });
