@@ -15,30 +15,21 @@ alert("Hello World! Let's play RPC :)");
             }
         }
 
-        // function getHumanChoice () {
-        //     choice = prompt("Please pick your choice: rock, paper or scissors");
-        //     return choice;
-        // }
-
         function playRound(humanChoice, computerChoice) {
             humanChoice = humanChoice.toLowerCase().trim();
 
             if (humanChoice != 'rock' && humanChoice != 'paper' && humanChoice != 'scissors') {
                 roundResult.textContent = "Wrong input. I will count it as a tie. Choose from: rock, paper or scissors (case insensitive).";
-                // return
             } else if (humanChoice === computerChoice) {
                 roundResult.textContent = "It's a tie!";
-                // return "It's a tie!"
             } else if ((humanChoice === "rock" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "rock")) {
                 computerScore += 1;
                 roundResult.textContent = `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`;
-                // return `You lose! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}`
             } else {
                 humanScore += 1;
                 roundResult.textContent = `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`;
-                // return `You Win! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}`
             }
         }
 
@@ -51,29 +42,18 @@ alert("Hello World! Let's play RPC :)");
                 }
                 humanScore = 0;
                 computerScore = 0;
+                // Use HTML "&nbsp" as a placeholder for <p>
                 roundResult.textContent = "\u00A0";
                 humanScoreOut.textContent = `Your current score: ${humanScore}`;
                 computerScoreOut.textContent = `Computer current score: ${computerScore}`;
             }
         }
 
-        // function playGame() {
-        //     for (let i=0; i<5; i++) {
+        function displayScore() {
+            humanScoreOut.textContent = `Your current score: ${humanScore}`;
+            computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+        }
 
-        //         let hSelection = getHumanChoice();
-        //         let cSelection = getComputerChoice();
-
-        //         console.log(`Round number ${i+1} \n` + playRound(hSelection, cSelection) + `.\nThe score is: Human - ${humanScore} VS Computer - ${computerScore}.`)
-        //     }
-        //     const result = undefined;
-        //     if (humanScore === computerScore) {
-        //         return `It's a tie! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-        //     } else if (humanScore < computerScore) {
-        //         return `You lost! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-        //     } else {
-        //         return `You won! Total score: Human - ${humanScore} VS Computer - ${computerScore}.`
-        //     }
-        // }
         let humanScore = 0;
         let computerScore = 0;
         
@@ -88,25 +68,20 @@ alert("Hello World! Let's play RPC :)");
         const rock = document.querySelector("#rock");
         rock.addEventListener("click", () => {
             playRound("rock", getComputerChoice());
-            humanScoreOut.textContent = `Your current score: ${humanScore}`;
-            computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            displayScore();
             isGameOver();
         });
         
         const paper = document.querySelector("#paper");
         paper.addEventListener("click", () => {
             playRound("paper", getComputerChoice());
-            humanScoreOut.textContent = `Your current score: ${humanScore}`;
-            computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            displayScore();
             isGameOver();
         });
 
         const scissors = document.querySelector("#scissors");
         scissors.addEventListener("click", () => {
             playRound("scissors", getComputerChoice());
-            humanScoreOut.textContent = `Your current score: ${humanScore}`;
-            computerScoreOut.textContent = `Computer current score: ${computerScore}`;
+            displayScore();
             isGameOver();
         });
-
-        // console.log(playGame());
